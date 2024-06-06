@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ClientService } from '../../service/client.service';
+import { IClient } from '../../models/client.interface';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,10 @@ import {
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  loginForm: FormGroup; //
+  loginForm: FormGroup; // Formulario login
+
+  // Inyecciones
+  private _clientService = inject(ClientService);
 
   // Formulario para validación
   constructor(private formBuilder: FormBuilder) {
@@ -37,8 +42,8 @@ export class LoginComponent {
       alert('Diligencie correctamente los campos!');
       return;
     }
-    console.log('Formulario enviado!');
-    console.log(this.loginForm.value);
+
+    console.log(`Verificando correo: ${this.loginForm.get('email')?.value}`);
   }
 
   // Verificación de datos inválidos en los campos
