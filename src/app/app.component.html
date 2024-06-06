@@ -1,15 +1,15 @@
 <header class="text-gray-600 body-font">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+    <a (click)="goHome()" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 hover:text-yellow-600 cursor-pointer">
       <img src="https://i.pinimg.com/originals/b8/cd/c1/b8cdc1ad498fe080bc21bb5a03c24f83.png" width="50px" height="50px" alt="Logo Bancolombia">
       <span class="ml-3 text-xl">Bancolombia</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-      <a class="mr-5 hover:text-gray-900">Inicio</a>
-      <a class="mr-5 hover:text-gray-900">Quiénes somos</a>
-      <a class="mr-5 hover:text-gray-900">Servicios Leasing</a>
+      <a class="mr-5 hover:text-yellow-600 cursor-pointer" (click)="goHome()">Inicio</a>
+      <a class="mr-5 hover:text-yellow-600 cursor-pointer">Quiénes somos</a>
+      <a class="mr-5 hover:text-yellow-600 cursor-pointer" (click)="goRequestService()">Servicios Leasing</a>
     </nav>
-    <button class="inline-flex items-center bg-yellow-400 border-0 py-1 px-3 focus:outline-none hover:bg-blue-800 hover:text-yellow-400 rounded text-base mt-4 md:mt-0">
+    <button (click)="goLogin()" class="inline-flex items-center bg-yellow-400 border-0 py-1 px-3 focus:outline-none hover:bg-blue-800 hover:text-yellow-400 rounded text-base mt-4 md:mt-0">
       Login
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -17,5 +17,4 @@
     </button>
   </div>
 </header>
-<app-inicio />
 <router-outlet />
