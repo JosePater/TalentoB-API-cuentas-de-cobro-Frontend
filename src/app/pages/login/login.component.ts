@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
       },
       error: (err) => {
         console.log(`Error: ${err}`);
+        alert("Hubo un problema con el servidor");
         this._auth.setAuth(false);
         this.goClientDetails(this._auth.getAuth());
       },

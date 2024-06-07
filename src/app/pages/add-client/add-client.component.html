@@ -1,0 +1,285 @@
+<form
+  [formGroup]="addClientForm"
+  class="max-w-lg mx-auto"
+  (ngSubmit)="registerClient()"
+>
+  <div class="m-5">
+    <h2 class="mb-2 text-gray-900 font-medium">Datos del cliente</h2>
+    <div class="mb-5">
+      <label for="nit" class="block mb-2 text-sm text-gray-900"
+        >Ingrese NIT:</label
+      >
+      <input
+        type="number"
+        id="nit"
+        formControlName="nit"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
+        placeholder="1100500600"
+        [ngClass]="{
+          'border-red-500':
+            hasErrors('nit', 'required') ||
+            hasErrors('nit', 'min') ||
+            hasErrors('nit', 'pattern'),
+          'border-green-600':
+            !hasErrors('nit', 'required') &&
+            wasItTouched('nit') &&
+            !hasErrors('nit', 'pattern') &&
+            !hasErrors('nit', 'min')
+        }"
+      />
+      @if (hasErrors('nit','required')) {
+      <span class="text-red-600 text-sm"
+        >* NIT requerido (sin puntos de separación)</span
+      >
+      } @if (hasErrors('nit', 'pattern')) {
+      <span class="text-red-600 text-sm"
+        >* Ingrese solo números (sin puntos de separación)</span
+      >
+      } @else if (hasErrors('nit', 'min')) {
+      <span class="text-red-600 text-sm">* Mínimo 8 dígitos</span>
+      }
+    </div>
+
+    <div class="mb-5">
+      <label for="businessName" class="block mb-2 text-sm text-gray-900"
+        >Ingrese la razón social:</label
+      >
+      <input
+        type="text"
+        id="businessName"
+        formControlName="businessName"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
+        placeholder="PaterTronick Company"
+        [ngClass]="{
+          'border-red-500':
+            hasErrors('businessName', 'required') ||
+            hasErrors('businessName', 'minlength'),
+          'border-green-600':
+            !hasErrors('businessName', 'required') &&
+            wasItTouched('businessName')
+        }"
+      />
+      @if (hasErrors('businessName','required')) {
+      <span class="text-red-600 text-sm">* Razón social requerida</span>
+      } @if (hasErrors('businessName', 'minlength')) {
+      <span class="text-red-600 text-sm">* Mínimo 4 caracteres</span>
+      }
+    </div>
+
+    <div class="mb-5">
+      <label for="phone" class="block mb-2 text-sm text-gray-900"
+        >Ingrese su número de teléfono:</label
+      >
+      <input
+        type="number"
+        id="phone"
+        formControlName="phone"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="321 456 7890"
+        [ngClass]="{
+          'border-red-500':
+            hasErrors('phone', 'required') ||
+            hasErrors('phone', 'min') ||
+            hasErrors('phone', 'pattern'),
+          'border-green-600':
+            !hasErrors('phone', 'required') &&
+            wasItTouched('phone') &&
+            !hasErrors('phone', 'pattern') &&
+            !hasErrors('phone', 'min')
+        }"
+      />
+      @if (hasErrors('phone','required')) {
+      <span class="text-red-600 text-sm">* Teléfono requerido</span>
+      } @if (hasErrors('phone', 'pattern')) {
+      <span class="text-red-600 text-sm"
+        >* Ingrese solo números (sin puntos de separación)</span
+      >
+      } @else if (hasErrors('phone', 'min')) {
+      <span class="text-red-600 text-sm">* Mínimo 10 dígitos</span>
+      }
+    </div>
+
+    <div class="mb-5">
+      <label for="email" class="block mb-2 text-sm text-gray-900"
+        >Ingrese su correo:</label
+      >
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
+        placeholder="su-email@domicio.com"
+        [ngClass]="{
+          'border-red-500':
+            hasErrors('email', 'required') || hasErrors('email', 'minlength'),
+          'border-green-600':
+            !hasErrors('email', 'required') && wasItTouched('email')
+        }"
+      />
+      @if (hasErrors('email','required')) {
+      <span class="text-red-600 text-sm">* Correo requerido</span>
+      } @if (hasErrors('email', 'email')) {
+      <span class="text-red-600 text-sm">* Correo inválido</span>
+      }
+    </div>
+
+    <div class="mb-5">
+      <label for="address" class="block mb-2 text-sm text-gray-900"
+        >Ingrese su dirección:</label
+      >
+      <input
+        type="text"
+        id="address"
+        formControlName="address"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
+        placeholder="Calle 10 # 15 - 22. Medellín"
+        [ngClass]="{
+          'border-red-500':
+            hasErrors('address', 'required') ||
+            hasErrors('address', 'minlength'),
+          'border-green-600':
+            !hasErrors('address', 'required') && wasItTouched('address')
+        }"
+      />
+      @if (hasErrors('address','required')) {
+      <span class="text-red-600 text-sm">* Dirección requerida</span>
+      } @if (hasErrors('address', 'minlength')) {
+      <span class="text-red-600 text-sm">* Mínimo 8 caracteres</span>
+      }
+    </div>
+
+    <h2 class="mb-2 mt-8 text-gray-900 font-medium">
+      Datos del servicio a solicitar
+    </h2>
+
+    <label for="service" class="block mb-2 text-sm text-gray-900"
+      >Seleccionar tipo de servicio:</label
+    >
+    <select
+      id="service"
+      formControlName="service"
+      class="bg-gray-50 mb-4 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-indigo-500 focus:bg-blue-50 focus:ring-2 focus:ring-indigo-200 block w-full p-2.5"
+      [ngClass]="{
+        'border-red-500': hasErrors('service', 'required'),
+        'border-green-600':
+          !hasErrors('service', 'required') && wasItTouched('service')
+      }"
+    >
+      @for (service of typeServices; track $index) {
+      <option value="{{ service }}">{{ service }}</option>
+      }
+    </select>
+
+    <div class="mb-5">
+      <label for="assetValue" class="block mb-2 text-sm text-gray-900"
+        >Ingrese el valor a solicitar:</label
+      >
+      <input
+        type="number"
+        id="assetValue"
+        formControlName="assetValue"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
+        placeholder="$10.000.000"
+        [ngClass]="{
+          'border-red-500':
+            hasErrors('assetValue', 'required') ||
+            hasErrors('assetValue', 'min') ||
+            hasErrors('assetValue', 'pattern'),
+          'border-green-600':
+            !hasErrors('assetValue', 'required') &&
+            wasItTouched('assetValue') &&
+            !hasErrors('assetValue', 'pattern') &&
+            !hasErrors('assetValue', 'min')
+        }"
+      />
+      @if (hasErrors('assetValue','required')) {
+      <span class="text-red-600 text-sm"
+        >* Valor requerido (sin puntos de separación)</span
+      >
+      } @if (hasErrors('assetValue', 'pattern')) {
+      <span class="text-red-600 text-sm"
+        >* Ingrese solo números (sin puntos de separación)</span
+      >
+      } @else if (hasErrors('assetValue', 'min')) {
+      <span class="text-red-600 text-sm"
+        >* Valor mínimo a solicitar: $100.000</span
+      >
+      }
+    </div>
+
+    <div class="mb-5">
+      <label for="maxTerm" class="block mb-2 text-sm text-gray-900"
+        >Ingrese el plazo máximo en meses:</label
+      >
+      <input
+        type="number"
+        id="maxTerm"
+        formControlName="maxTerm"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
+        placeholder="Entre 36 a 120 meses"
+        [ngClass]="{
+          'border-red-500':
+            hasErrors('maxTerm', 'required') ||
+            hasErrors('maxTerm', 'min') ||
+            hasErrors('maxTerm', 'max'),
+          'border-green-600':
+            !hasErrors('maxTerm', 'required') &&
+            wasItTouched('maxTerm') &&
+            !hasErrors('maxTerm', 'min') &&
+            !hasErrors('maxTerm', 'max')
+        }"
+      />
+      @if (hasErrors('maxTerm','required')) {
+      <span class="text-red-600 text-sm"
+        >* Plazo máximo requerido (sin puntos de separación)</span
+      >
+      } @else if (hasErrors('maxTerm', 'min')) {
+      <span class="text-red-600 text-sm">* Desde 36 meses</span>
+      } @else if (hasErrors('maxTerm', 'max')) {
+      <span class="text-red-600 text-sm">* Hasta 120 meses</span>
+      }
+    </div>
+
+    <label for="canonPeriod" class="block mb-2 text-sm text-gray-900"
+      >Seleccione el periodo del canon:</label
+    >
+    <select
+      id="canonPeriod"
+      formControlName="canonPeriod"
+      class="bg-gray-50 mb-4 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-indigo-500 focus:bg-blue-50 focus:ring-2 focus:ring-indigo-200 block w-full p-2.5"
+      [ngClass]="{
+        'border-red-500': hasErrors('canonPeriod', 'required'),
+        'border-green-600':
+          !hasErrors('canonPeriod', 'required') && wasItTouched('canonPeriod')
+      }"
+    >
+      <option value="1">Mensual</option>
+      <option value="3">Trimestral</option>
+      <option value="6">Semestral</option>
+    </select>
+  </div>
+
+  <div class="mt-6 flex items-center justify-center space-x-2">
+    <button
+      type="submit"
+      class="my-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2"
+    >
+      Guardar
+      <svg
+        class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 5h12m0 0L9 1m4 4L9 9"
+        />
+      </svg>
+    </button>
+  </div>
+</form>
