@@ -161,7 +161,7 @@ export class CollectionAccountsService {
       return 'Trimestral';
     }
     if (periodo == 6) {
-      return 'Semestra';
+      return 'Semestral';
     }
     return 'No especificado';
   }

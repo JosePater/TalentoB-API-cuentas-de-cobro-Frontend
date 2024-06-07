@@ -60,11 +60,14 @@ export class LoginComponent implements OnInit {
       next: (data) => {
         this.cliente = data;
 
-        // Validar los datos del login
-        if (this.cliente.email === email && this.cliente.nit === nit) {
-          this._auth.setAuth(true); // Autorizado
-          this._clientService.setloggedClient(data); // Guarda los datos del cliente
-          alert('Bienvenido!!!');
+        if (this.cliente) {
+          if (this.cliente.email == email && this.cliente.nit == nit) {
+            this._auth.setAuth(true); // Autorizado
+            this._clientService.setloggedClient(data); // Guarda los datos del cliente
+            alert('Bienvenido!!!');
+          } else {
+            alert('Acceso denegado!!!');
+          }
         } else {
           alert('Acceso denegado!!!');
         }
@@ -73,7 +76,7 @@ export class LoginComponent implements OnInit {
       },
       error: (err) => {
         console.log(`Error: ${err}`);
-        alert("Hubo un problema con el servidor");
+        alert('Hubo un problema con el servidor');
         this._auth.setAuth(false);
         this.goClientDetails(this._auth.getAuth());
       },
