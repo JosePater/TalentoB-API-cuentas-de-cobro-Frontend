@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -28,5 +27,10 @@ export class AppComponent {
   // Ir al solicitud de servicios
   goRequestService() {
     this._router.navigate(['/solicitud-leasing']);
+  }
+
+  // Ir a acerca de nosotros
+  goAboutUs() {
+    this._router.navigate(['/nosotros']);
   }
 }
