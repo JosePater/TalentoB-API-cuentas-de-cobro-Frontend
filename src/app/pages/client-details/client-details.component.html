@@ -1,0 +1,45 @@
+<section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-10 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">Nit: {{client.nit}}</h2>
+          <h1 class="text-gray-900 text-3xl title-font font-medium">{{client.razonSocial}}</h1>
+          <p class="leading-relaxed">Correo: {{client.email}}</p>
+          <p class="leading-relaxed mb-4">Celular: {{client.celular}}</p>
+          <div class="flex mb-4">
+            <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Dirección</a>
+          </div>
+          <p class="leading-relaxed mb-4">{{client.direccion}}</p>
+
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Tipo de servicio</span>
+            <span class="ml-auto text-gray-900">{{client.servicio}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Valor del activo</span>
+            <span class="ml-auto text-gray-900">${{client.valorActivo }}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Plazo máximo</span>
+            <span class="ml-auto text-gray-900">{{client.plazoMaximo}} meses</span>
+          </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <span class="text-gray-500">Periodo del Canon</span>
+            <span class="ml-auto text-gray-900">{{periodoCannon()}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Intereses  ({{valorIntereses}}% x mes)</span>
+          </div>
+
+          <div class="flex">
+            <span class="title-font font-medium text-gray-900">Valor {{periodoCannon()}} a pagar ${{valorAPagarCanon}}</span>
+
+            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                Generar cuenta de cobro
+            </button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
