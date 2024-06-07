@@ -41,60 +41,60 @@
     </div>
 
     <div class="mb-5">
-      <label for="businessName" class="block mb-2 text-sm text-gray-900"
+      <label for="razonSocial" class="block mb-2 text-sm text-gray-900"
         >Ingrese la razón social:</label
       >
       <input
         type="text"
-        id="businessName"
-        formControlName="businessName"
+        id="razonSocial"
+        formControlName="razonSocial"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
         placeholder="PaterTronick Company"
         [ngClass]="{
           'border-red-500':
-            hasErrors('businessName', 'required') ||
-            hasErrors('businessName', 'minlength'),
+            hasErrors('razonSocial', 'required') ||
+            hasErrors('razonSocial', 'minlength'),
           'border-green-600':
-            !hasErrors('businessName', 'required') &&
-            wasItTouched('businessName')
+            !hasErrors('razonSocial', 'required') &&
+            wasItTouched('razonSocial')
         }"
       />
-      @if (hasErrors('businessName','required')) {
+      @if (hasErrors('razonSocial','required')) {
       <span class="text-red-600 text-sm">* Razón social requerida</span>
-      } @if (hasErrors('businessName', 'minlength')) {
+      } @if (hasErrors('razonSocial', 'minlength')) {
       <span class="text-red-600 text-sm">* Mínimo 4 caracteres</span>
       }
     </div>
 
     <div class="mb-5">
-      <label for="phone" class="block mb-2 text-sm text-gray-900"
+      <label for="celular" class="block mb-2 text-sm text-gray-900"
         >Ingrese su número de teléfono:</label
       >
       <input
-        type="number"
-        id="phone"
-        formControlName="phone"
+        type="phone"
+        id="celular"
+        formControlName="celular"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         placeholder="321 456 7890"
         [ngClass]="{
           'border-red-500':
-            hasErrors('phone', 'required') ||
-            hasErrors('phone', 'min') ||
-            hasErrors('phone', 'pattern'),
+            hasErrors('celular', 'required') ||
+            hasErrors('celular', 'min') ||
+            hasErrors('celular', 'pattern'),
           'border-green-600':
-            !hasErrors('phone', 'required') &&
-            wasItTouched('phone') &&
-            !hasErrors('phone', 'pattern') &&
-            !hasErrors('phone', 'min')
+            !hasErrors('celular', 'required') &&
+            wasItTouched('celular') &&
+            !hasErrors('celular', 'pattern') &&
+            !hasErrors('celular', 'min')
         }"
       />
-      @if (hasErrors('phone','required')) {
+      @if (hasErrors('celular','required')) {
       <span class="text-red-600 text-sm">* Teléfono requerido</span>
-      } @if (hasErrors('phone', 'pattern')) {
+      } @if (hasErrors('celular', 'pattern')) {
       <span class="text-red-600 text-sm"
         >* Ingrese solo números (sin puntos de separación)</span
       >
-      } @else if (hasErrors('phone', 'min')) {
+      } @else if (hasErrors('celular', 'min')) {
       <span class="text-red-600 text-sm">* Mínimo 10 dígitos</span>
       }
     </div>
@@ -111,7 +111,7 @@
         placeholder="su-email@domicio.com"
         [ngClass]="{
           'border-red-500':
-            hasErrors('email', 'required') || hasErrors('email', 'minlength'),
+            hasErrors('email', 'required') || hasErrors('email', 'email'),
           'border-green-600':
             !hasErrors('email', 'required') && wasItTouched('email')
         }"
@@ -124,26 +124,26 @@
     </div>
 
     <div class="mb-5">
-      <label for="address" class="block mb-2 text-sm text-gray-900"
+      <label for="direccion" class="block mb-2 text-sm text-gray-900"
         >Ingrese su dirección:</label
       >
       <input
         type="text"
-        id="address"
-        formControlName="address"
+        id="direccion"
+        formControlName="direccion"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
         placeholder="Calle 10 # 15 - 22. Medellín"
         [ngClass]="{
           'border-red-500':
-            hasErrors('address', 'required') ||
-            hasErrors('address', 'minlength'),
+            hasErrors('direccion', 'required') ||
+            hasErrors('direccion', 'minlength'),
           'border-green-600':
-            !hasErrors('address', 'required') && wasItTouched('address')
+            !hasErrors('direccion', 'required') && wasItTouched('direccion')
         }"
       />
-      @if (hasErrors('address','required')) {
+      @if (hasErrors('direccion','required')) {
       <span class="text-red-600 text-sm">* Dirección requerida</span>
-      } @if (hasErrors('address', 'minlength')) {
+      } @if (hasErrors('direccion', 'minlength')) {
       <span class="text-red-600 text-sm">* Mínimo 8 caracteres</span>
       }
     </div>
@@ -152,55 +152,55 @@
       Datos del servicio a solicitar
     </h2>
 
-    <label for="service" class="block mb-2 text-sm text-gray-900"
+    <label for="servicio" class="block mb-2 text-sm text-gray-900"
       >Seleccionar tipo de servicio:</label
     >
     <select
-      id="service"
-      formControlName="service"
+      id="servicio"
+      formControlName="servicio"
       class="bg-gray-50 mb-4 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-indigo-500 focus:bg-blue-50 focus:ring-2 focus:ring-indigo-200 block w-full p-2.5"
       [ngClass]="{
-        'border-red-500': hasErrors('service', 'required'),
+        'border-red-500': hasErrors('servicio', 'required'),
         'border-green-600':
-          !hasErrors('service', 'required') && wasItTouched('service')
+          !hasErrors('servicio', 'required') && wasItTouched('servicio')
       }"
     >
-      @for (service of typeServices; track $index) {
-      <option value="{{ service }}">{{ service }}</option>
+      @for (servicio of typeServices; track $index) {
+      <option value="{{ servicio }}">{{ servicio }}</option>
       }
     </select>
 
     <div class="mb-5">
-      <label for="assetValue" class="block mb-2 text-sm text-gray-900"
+      <label for="valorActivo" class="block mb-2 text-sm text-gray-900"
         >Ingrese el valor a solicitar:</label
       >
       <input
         type="number"
-        id="assetValue"
-        formControlName="assetValue"
+        id="valorActivo"
+        formControlName="valorActivo"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
         placeholder="$10.000.000"
         [ngClass]="{
           'border-red-500':
-            hasErrors('assetValue', 'required') ||
-            hasErrors('assetValue', 'min') ||
-            hasErrors('assetValue', 'pattern'),
+            hasErrors('valorActivo', 'required') ||
+            hasErrors('valorActivo', 'min') ||
+            hasErrors('valorActivo', 'pattern'),
           'border-green-600':
-            !hasErrors('assetValue', 'required') &&
-            wasItTouched('assetValue') &&
-            !hasErrors('assetValue', 'pattern') &&
-            !hasErrors('assetValue', 'min')
+            !hasErrors('valorActivo', 'required') &&
+            wasItTouched('valorActivo') &&
+            !hasErrors('valorActivo', 'pattern') &&
+            !hasErrors('valorActivo', 'min')
         }"
       />
-      @if (hasErrors('assetValue','required')) {
+      @if (hasErrors('valorActivo','required')) {
       <span class="text-red-600 text-sm"
         >* Valor requerido (sin puntos de separación)</span
       >
-      } @if (hasErrors('assetValue', 'pattern')) {
+      } @if (hasErrors('valorActivo', 'pattern')) {
       <span class="text-red-600 text-sm"
         >* Ingrese solo números (sin puntos de separación)</span
       >
-      } @else if (hasErrors('assetValue', 'min')) {
+      } @else if (hasErrors('valorActivo', 'min')) {
       <span class="text-red-600 text-sm"
         >* Valor mínimo a solicitar: $100.000</span
       >
@@ -208,49 +208,49 @@
     </div>
 
     <div class="mb-5">
-      <label for="maxTerm" class="block mb-2 text-sm text-gray-900"
+      <label for="plazoMaximo" class="block mb-2 text-sm text-gray-900"
         >Ingrese el plazo máximo en meses:</label
       >
       <input
         type="number"
-        id="maxTerm"
-        formControlName="maxTerm"
+        id="plazoMaximo"
+        formControlName="plazoMaximo"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
         placeholder="Entre 36 a 120 meses"
         [ngClass]="{
           'border-red-500':
-            hasErrors('maxTerm', 'required') ||
-            hasErrors('maxTerm', 'min') ||
-            hasErrors('maxTerm', 'max'),
+            hasErrors('plazoMaximo', 'required') ||
+            hasErrors('plazoMaximo', 'min') ||
+            hasErrors('plazoMaximo', 'max'),
           'border-green-600':
-            !hasErrors('maxTerm', 'required') &&
-            wasItTouched('maxTerm') &&
-            !hasErrors('maxTerm', 'min') &&
-            !hasErrors('maxTerm', 'max')
+            !hasErrors('plazoMaximo', 'required') &&
+            wasItTouched('plazoMaximo') &&
+            !hasErrors('plazoMaximo', 'min') &&
+            !hasErrors('plazoMaximo', 'max')
         }"
       />
-      @if (hasErrors('maxTerm','required')) {
+      @if (hasErrors('plazoMaximo','required')) {
       <span class="text-red-600 text-sm"
         >* Plazo máximo requerido (sin puntos de separación)</span
       >
-      } @else if (hasErrors('maxTerm', 'min')) {
+      } @else if (hasErrors('plazoMaximo', 'min')) {
       <span class="text-red-600 text-sm">* Desde 36 meses</span>
-      } @else if (hasErrors('maxTerm', 'max')) {
+      } @else if (hasErrors('plazoMaximo', 'max')) {
       <span class="text-red-600 text-sm">* Hasta 120 meses</span>
       }
     </div>
 
-    <label for="canonPeriod" class="block mb-2 text-sm text-gray-900"
+    <label for="periodoCanon" class="block mb-2 text-sm text-gray-900"
       >Seleccione el periodo del canon:</label
     >
     <select
-      id="canonPeriod"
-      formControlName="canonPeriod"
+      id="periodoCanon"
+      formControlName="periodoCanon"
       class="bg-gray-50 mb-4 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-indigo-500 focus:bg-blue-50 focus:ring-2 focus:ring-indigo-200 block w-full p-2.5"
       [ngClass]="{
-        'border-red-500': hasErrors('canonPeriod', 'required'),
+        'border-red-500': hasErrors('periodoCanon', 'required'),
         'border-green-600':
-          !hasErrors('canonPeriod', 'required') && wasItTouched('canonPeriod')
+          !hasErrors('periodoCanon', 'required') && wasItTouched('periodoCanon')
       }"
     >
       <option value="1">Mensual</option>

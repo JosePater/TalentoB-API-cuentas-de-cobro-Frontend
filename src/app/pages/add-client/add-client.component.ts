@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { IClient } from '../../models/client.interface';
+import { ClientService } from '../../service/client.service';
 
 @Component({
   selector: 'app-add-client',
@@ -18,6 +19,8 @@ import { IClient } from '../../models/client.interface';
 export class AddClientComponent implements OnInit {
   addClientForm: FormGroup; // Formulario para registrar a un cliente
   formClientData!: IClient; // Datos del cliente a registrar
+
+  private _clientServie = inject(ClientService); // Servicio del cliente http
 
   // Tipos de servicios Leasing Bancolombia
   typeServices: string[] = [
@@ -40,8 +43,8 @@ export class AddClientComponent implements OnInit {
           Validators.min(10000000),
         ],
       ],
-      businessName: ['', [Validators.required, Validators.minLength(4)]],
-      phone: [
+      razonSocial: ['', [Validators.required, Validators.minLength(4)]],
+      celular: [
         '',
         [
           Validators.required,
@@ -50,10 +53,10 @@ export class AddClientComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.minLength(8)]],
+      direccion: ['', [Validators.required, Validators.minLength(8)]],
 
-      service: ['', [Validators.required]], // Tipo se servicio Leasing
-      assetValue: [
+      servicio: ['', [Validators.required]], // Tipo se servicio Leasing
+      valorActivo: [
         '',
         [
           Validators.required,
@@ -61,20 +64,15 @@ export class AddClientComponent implements OnInit {
           Validators.min(100000),
         ],
       ], // Valor del activo
-      maxTerm: [
+      plazoMaximo: [
         '',
         [Validators.required, Validators.min(36), Validators.max(120)],
       ], // Plazo máximo en meses
-      canonPeriod: ['', [Validators.required]], // Periodo del canon (mensual, trimestral o semestral)
+      periodoCanon: ['', [Validators.required]], // Periodo del canon (mensual, trimestral o semestral)
     });
   }
 
   ngOnInit(): void {}
-
-  // Convertir el valor del formulario a la interfaz IBuyForm
-  // getBuyFormValue(): IBuyForm {
-  //   return this.addClientForm.value as IBuyForm;
-  // }
 
   // Submit: Registrar cliente
   registerClient() {
@@ -82,10 +80,21 @@ export class AddClientComponent implements OnInit {
     this.focusCampos();
 
     if (this.addClientForm.valid) {
-      alert('Cliente registrado exitosamente!!!');
-
       this.formClientData = formValues;
       console.log(this.formClientData);
+
+      // Enviar cliente a http (POST)
+      this._clientServie.saveClient(this.formClientData).subscribe({
+        next: () => {
+          console.log(`Datos enviados por POST`);
+        },
+        error: (err) => {
+          console.log(`Error: ${err}`);
+          alert('Hubo un problema con el servidor');
+        },
+      });
+
+      alert('Cliente registrado exitosamente!!!');
       this.addClientForm.reset(); // Resetear el formulario
     }
   }

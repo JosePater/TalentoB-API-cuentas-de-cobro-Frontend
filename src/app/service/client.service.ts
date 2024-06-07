@@ -25,4 +25,9 @@ export class ClientService {
   getClientById(nit: number): Observable<IClient> {
     return this.http.post<IClient>(`${this.apiUrl}/cliente`, nit);
   }
+
+  // Guardar cliente
+  saveClient(client: IClient) {
+    return this.http.post<IClient>(`${this.apiUrl}/solicitud-leasing`, client);
+  }
 }
